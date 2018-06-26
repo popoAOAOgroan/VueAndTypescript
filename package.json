@@ -1,0 +1,25 @@
+{
+  "name": "typescript-vue",
+  "version": "0.1.0",
+  "license": "Unlicense",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --hot --inline",
+    "build": "NODE_ENV=production webpack -p"
+  },
+  "dependencies": {
+    "webpack": "^4.12.0"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "ts-loader": "^4.4.1",
+    "typescript": "^2.9.2",
+    "vue": "^2.5.16",
+    "vue-loader": "^15.2.4",
+    "vue-template-compiler": "^2.5.16",
+    "webpack-cli": "^3.0.8",
+    "webpack-command": "^0.2.1",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
