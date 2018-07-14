@@ -1,17 +1,15 @@
 
 import Vue from 'vue';
-// import TestTs from './components/test';
-import TestVue from './components/test.vue';
+// import TestVue from './components/test.vue';
+import index from './pages/index.vue';
 
 let app = new Vue({
   el: '#app',
-  data: {
-    message: 'Hello Vue!'
-  },
+  data: {},
   template: `
-    <TestVue />
+    <index />
   `,
   components: {
-    TestVue
+    index
   }
 })

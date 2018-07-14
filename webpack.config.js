@@ -1,8 +1,17 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const path = require('path');
+function resolve(dir) {
+  return path.join(__dirname, dir);
+}
 
 module.exports = {
   module: {
+    
     rules: [
       {
         test: /\.html$/,
@@ -44,8 +53,8 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              localIdentName: '[local]_[hash:base64:8]'
+              // modules: true,
+              // localIdentName: '[local]_[hash:base64:8]'
             }
           }
         ]
@@ -73,11 +82,21 @@ module.exports = {
     hints: false
   },
   plugins: [
+    new CleanWebpackPlugin(['dist'], { watch: true }),
     new HtmlWebPackPlugin({
       template: "./index.html",
       filename: "./index.html"
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new SWPrecacheWebpackPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/manifest.json'
+      },
+      {
+        from: 'static/*'
+      }
+    ])
   ],
   // Each module is executed with eval() and a SourceMap is added as a DataUrl to the eval(). Initially it is slow, but it provides fast rebuild speed and yields real files. Line numbers are correctly mapped since it gets mapped to the original code. It yields the best quality SourceMaps for development.
   devtool: process.env.NODE_ENV === 'production' ? '#source-map' : '#eval-source-map'

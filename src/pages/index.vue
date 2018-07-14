@@ -1,7 +1,7 @@
 <template>
     <div class="flex-center">
         <div class="container-fluid">
-            Content
+            <SudocuBox />
         </div>
     </div>
 
@@ -9,9 +9,12 @@
 
 <script lang="ts">
 import Vue from "vue";
-
+import SudocuBox from '../components/SudocuBox';
 export default Vue.extend({
     props: [],
+    components: {
+        SudocuBox
+    },
     data() {
         return {
             
@@ -27,7 +30,4 @@ export default Vue.extend({
 </script>
 
 <style>
-.greeting {
-    font-size: 20px;
-}
 </style>

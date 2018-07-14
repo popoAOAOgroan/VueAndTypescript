@@ -6,18 +6,40 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <!-- manifest file -->
+    <link rel="manifest" href="/manifest.json">
+
     <!-- Title of the page -->
     <title>typescript + vue</title>
 
     <!-- Mobi.css -->
     <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css">
 
-    <!-- vue -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
     <div id="app">
     </div>
-
   </body>
+  <script type="text/javascript">
+  // Register Service worker
+  (function() {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('./service-worker.js')
+        .then(function() {
+          log('Service worker registered!');
+        })
+        .catch(function(error) {
+          debugger;
+          log('Error registering service worker: ', error);
+        });
+    } else {
+      log('Not supported by browser');
+    }
+  })();
+  // logger
+  function log(msg) {
+    console.log(msg);
+  }
+  </script>
 </html>
