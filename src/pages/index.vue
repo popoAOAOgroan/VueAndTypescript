@@ -1,7 +1,7 @@
 <template>
     <div class="flex-center">
         <div class="container-fluid">
-            <SudocuBox />
+            <SudocuBox mode="SIMPLE"/>
         </div>
     </div>
 
